@@ -1,0 +1,25 @@
+name: demo2_Learn_Environment_variables_GitHub_actions
+# Event pour trigger le workflow manuellement
+on: workflow_dispatch
+
+# Variable déclarée ici = variable globale
+env: 
+  NAME: DBB
+
+jobs: 
+  say_hello:
+    runs-on: ubuntu-latest
+    env: 
+      ENTREPRISE: DBB United
+    steps:
+      - name: Dit bonjour
+        run: echo "Salut $NAME ! Tu travailles chez $ENTREPRISE ? Alors bon $DAY à toi"
+        env: 
+          DAY: lundi
+      - name: Lundi ?
+        run: echo "Quel jour sommes-nous ? $DAY ?"
+  say_goodbye: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Dit au revoir"
+        run: echo "Au revoir $NAME ! Rappelle-moi, tu travailles pour quelle entreprise déjà ? $ENTREPRISE, c'est ça ?"
