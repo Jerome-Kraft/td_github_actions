@@ -1,0 +1,21 @@
+name: demo3_Learn_Context_GitHub_actions
+# Event pour trigger le workflow manuellement
+on: workflow_dispatch
+
+# Variable déclarée ici = variable globale
+env: 
+  NAME: DBB
+
+jobs: 
+  say_hello:
+    runs-on: ubuntu-latest
+    #variable déclarée ici = variable de portée locale (à portée plus limitée)
+    env: 
+      ENTREPRISE: DBB United
+    steps:
+      - name: "Dit bonjour"
+        if: ${{ env.NAME != 'DBB' }}
+        run: echo "Salut toi ! Tu n'es pas DBB ! Oo "
+      - name: "Coucou DBB"
+        if: ${{ env.NAME == 'DBB' }}
+        run: echo "Hello DBB !"
