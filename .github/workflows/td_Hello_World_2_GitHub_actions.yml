@@ -1,6 +1,9 @@
 name: hello_world_2_github_actions
 
-on: workflow_dispatch
+#on: [push, pull_request]
+on: 
+  push: 
+  pull_request:
 
 # Variables d'environnement globales
 env: 
@@ -21,5 +24,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: 'Pull request'
-        if: ${{ github.event_name == 'pull' }}
+        if: ${{ github.event_name == 'pull_request' }}
         run: echo $PULL_REQUEST_MESSAGE
