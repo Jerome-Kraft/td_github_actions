@@ -9,10 +9,11 @@ env:
 jobs: 
   say_hello:
     runs-on: ubuntu-latest
+    #variable déclarée ici = variable de portée locale (à portée plus limitée)
     env: 
       ENTREPRISE: DBB United
     steps:
-      - name: Dit bonjour
+      - name: "Dit bonjour"
         run: echo "Salut $NAME ! Tu travailles chez $ENTREPRISE ? Alors bon $DAY à toi"
         env: 
           DAY: lundi
