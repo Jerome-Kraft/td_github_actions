@@ -1,0 +1,25 @@
+name: hello_world_2_github_actions
+
+on: workflow_dispatch
+
+# Variables d'environnement globales
+env: 
+  PUSH_REQUEST_MESSAGE: It's a push!
+  PULL_REQUEST_MESSAGE: It's a pull!
+
+jobs:
+  push_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Push request'
+        if: ${{ github.event_name == 'push' }}
+        run: echo $PUSH_REQUEST_MESSAGE
+  
+  pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: 'Pull request'
+        if: ${{ github.event_name == 'pull' }}
+        run: echo $PULL_REQUEST_MESSAGE
