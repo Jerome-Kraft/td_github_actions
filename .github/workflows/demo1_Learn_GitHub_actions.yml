@@ -4,6 +4,7 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      # "actions/checkout@v3" : nécessaire lorsque'on doit analyser du code que l'on veut envoyer vers une branche GitHub. Sinon, n'est pas nécessaire pour les autres actions (workflow basé sur un event GitHub, sur un autre workflow...)
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with: 

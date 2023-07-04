@@ -1,0 +1,38 @@
+name: demo4_Learn_Artifacts_deploiement_GitHub_actions
+
+on: workflow_dispatch
+
+jobs: 
+  upload:
+    name: Upload
+    runs-on: ubuntu-latest
+    steps: 
+      # Création du fichier :
+      - name: 'Create file'
+        run: echo 'Coucou !' > artifact.txt
+      # Upload du fichier :
+      - name: 'Upload artifact'
+        # On utilise l'action github qui permet de faire l'upload
+        uses: actions/upload-artifact@v3
+        # On passe en paramètre le nom et le chemin qui devront être utilisés pour l'upload
+        with:
+          name: artifact
+          path: artifact.text
+
+  download:
+    needs: upload
+    # orthographe "upload" car c'est le nom (en bleu) du job, pas le nom qu'on lui donne pour l'identifier lors des étapes d'exécution du run
+    name: Download
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Download artifact'
+      # On récupère le fichier via l'action download-artifact
+        uses: actions/download-artifact@v3
+        with:
+          # On lui précise le nom de l'artéfact à récupérer, sinon par défaut il prenra le nom "artifact"
+          name: 'Artifact'
+      - name: 'Read-file'
+        # Commande Linux pour lire le contenu d'un fichier 
+        run: cat artifact.txt
+
+
