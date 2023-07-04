@@ -1,10 +1,6 @@
 name: hello_world_2_github_actions
 
 on: [push, pull_request]
-# Autre possibilité :
-# on: 
-#   push: 
-#   pull_request:
 
 # Variables d'environnement globales
 env: 
@@ -15,6 +11,7 @@ jobs:
   push_request:
     runs-on: ubuntu-latest
     steps:
+      # "actions/checkout@v3" : nécessaire lorsque'on doit analyser du code que l'on veut envoyer vers une branche GitHub. Sinon, n'est pas nécessaire pour les autres actions (workflow basé sur un event GitHub, sur un autre workflow...)
       - uses: actions/checkout@v3
       - name: 'Push request'
         # if: ${{ github.event_name == 'push' }}
