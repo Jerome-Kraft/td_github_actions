@@ -1,0 +1,31 @@
+name: td_5_nf7-do-01_github_actions
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  main_branch_protection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Main branch protection'
+        uses: branch-protection@v3
+        # Specify all needed inputs for the github action:
+        with:
+          # Secret token, provided by GitHub:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Branch to protect:
+          branch: main
+          # Apply branch protection rule to the admins ('true': include admin, 'false': exclude admin):
+          enforce_admins: true
+          # Require pull request reviews before merging:
+          required_pull_request_reviews: true
+          # Enfore linear commit history: 
+          required_linear_history: true
+          # Require passing status checks before merging ('true': require checks, 'false': not required):
+          required_status_checks: false
+          # Enforce branch protection rules:
+          strict: true
+
+
+
