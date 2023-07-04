@@ -1,0 +1,13 @@
+name: hello_world_3-3_next_one_github_actions
+
+on:
+  workflow_run:
+    workflows: [hello_world_3-2_pull_request_merged_github_actions]
+    types: [completed]
+
+jobs:
+  next_one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Next one'
+        run: echo "Previous workflow is completed, workflow 'Next one' is running."

@@ -1,0 +1,14 @@
+name: hello_world_3-2_pull_request_merged_github_actions
+
+on: 
+  pull_request:
+    types: [closed]
+
+jobs:
+  pull_request_closed_and_merged:
+    if: github.event.pull_request.merged == true
+    # ici, ne pas mettre le "${{ }}", ce n'est pas une variable mais un event de GitHub
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Pull request closed and merged'
+        run: echo 'Pull request closed and merged.'

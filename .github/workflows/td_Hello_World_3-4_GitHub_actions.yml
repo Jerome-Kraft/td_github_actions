@@ -1,0 +1,17 @@
+name: hello_world_3-4_workflow_depends_github_actions
+
+on: workflow_dispatch
+
+jobs:
+  workflow_runs_on_dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Runs on dispatch'
+        run: echo 'First job has completed.'
+  workflows_runs_when_previous_workflow_has_completed:
+    needs: [workflow_runs_on_dispatch]
+    # "needs: " peut être mis après le "run: " => ils sont tous les deux au même niveau d'indentation, donc le workflow arrivera à les récupérer tous les deux et ils s'exécuteront sans soucis
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Runs after previous workflow has completed'
+        run: echo 'Second job runs after first one.'

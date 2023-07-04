@@ -1,0 +1,12 @@
+name: hello_world_3-1_issues_github_actions
+
+on: 
+  issues:
+    types: [opened]
+
+jobs: 
+  on_issue_opened:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Issue opened'
+        run: echo 'Issue created'
