@@ -4,6 +4,7 @@ jobs:
   print_hello_world:
     runs-on: ubuntu-latest
     steps:
+      # "actions/checkout@v3" : nécessaire lorsque'on doit analyser du code que l'on veut envoyer vers une branche GitHub. Sinon, n'est pas nécessaire pour les autres actions (workflow basé sur un event GitHub, sur un autre workflow...)
       - uses: actions/checkout@v3
       - name: Hello World!
         run: echo Hello, world!
