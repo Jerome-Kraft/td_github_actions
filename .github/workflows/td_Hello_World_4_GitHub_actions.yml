@@ -1,0 +1,16 @@
+name: hello_world_4_pipeline_github_actions
+
+on: workflow_dispatch
+
+jobs:
+  fruits_matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      # Permet d'arrêter tous les tests en cas d'échec de l'un d'entre-eux
+      fail-fast: true
+      matrix: 
+        fruits_table: [apple, banana, cherry, strawberry]
+        names_table: [Pierre, Paul, Jacques]
+    steps: 
+      - name: 'Pipeline'
+        run: echo '${{ matrix.names_table }} mange une  ${{ matrix.fruits_table }}, et il adore ça !'
