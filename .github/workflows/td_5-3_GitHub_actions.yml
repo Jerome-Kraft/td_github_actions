@@ -2,7 +2,7 @@ name: td_5_nf7-do-03_github_actions
 
 on: 
   push:
-    branches: [features/**, hotfix/**]
+    branches: [features, hotfix]
 
 jobs:
   features_branch_commits_validation_pipeline:
@@ -21,7 +21,8 @@ jobs:
   
   hotfix_branch_commits_validation_pipeline:
     # Check if push event is on the hotfix branch:
-    if: github.ref_name == 'hotfix'  
+    # if: github.ref_name == 'hotfix'  => ne fonctionne pas
+    if:  startsWith(github.head_ref, 'hotfix')
     runs-on: ubuntu-latest
     steps:
       - name: 'Code checkout'
