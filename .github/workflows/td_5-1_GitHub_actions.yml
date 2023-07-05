@@ -1,3 +1,12 @@
+# Non fonctionnel
+# Option : faire comme tout le monde et mettre en place les protections de branche via GitHub.com :
+#   - aller sur la page principale du répertoire
+#   - "Settings" -> "Branches" (section "Code and automation") -> bouton "Add protection rules"
+#   - Mettre le nom de la branche à protéger dans "Branch name pattern"
+#   - Cocher "Require a pull request before merging"
+#   - Parcourir les différentes options possibles, ajouter celles désirées
+#   - "Create"
+
 name: td_5_nf7-do-01_github_actions
 
 on: 
@@ -9,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Main branch protection'
-        uses: branch-protection@v3
+        uses: enforcement-actions/branch-protection@v2
         # Specify all needed inputs for the github action:
         with:
           # Secret token, provided by GitHub:
