@@ -1,0 +1,13 @@
+name: td_5_nf8-do-01_github_actions
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name:
+        uses: commit_message_checker@v3

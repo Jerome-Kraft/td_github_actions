@@ -1,0 +1,30 @@
+name: td_5_nf7-do-03_github_actions
+
+on: 
+  push:
+    branches: [features/**, hotfix/**]
+
+jobs:
+  features_branch_commits_validation_pipeline:
+    # Check if push event is on the feature branch:
+    if: github.ref_name == 'features'  
+    # Give the branch name (source : https://stackoverflow.com/questions/58033366/how-to-get-the-current-branch-within-github-actions/64210623#64210623)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Code checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Features branch validation'
+        uses: webiny/action-conventional-commits@v1.1.0
+
+  
+  hotfix_branch_commits_validation_pipeline:
+    # Check if push event is on the hotfix branch:
+    if: github.ref_name == 'hotfix'  
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Code checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Hotfix branch validation'
+        uses: webiny/action-conventional-commits@v1.1.0
