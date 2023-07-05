@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 'Features branch validation'
+      # Check if the commit message follows the 'Conventional commits' specifications and begins with 'feat:'
         uses: webiny/action-conventional-commits@v1.1.0
 
   
@@ -27,4 +28,5 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 'Hotfix branch validation'
+      # Check if the commit message follows the 'Conventional commits' specifications and begins with 'fix:'
         uses: webiny/action-conventional-commits@v1.1.0
