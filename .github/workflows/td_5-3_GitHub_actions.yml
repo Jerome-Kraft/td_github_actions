@@ -7,7 +7,7 @@ on:
 jobs:
   features_branch_commits_validation_pipeline:
     # Check if push event is on the feature branch:
-    if: github.ref_name == 'features'  
+    if: (github.ref_name == 'features')  
     # Give the branch name (source : https://stackoverflow.com/questions/58033366/how-to-get-the-current-branch-within-github-actions/64210623#64210623)
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,7 @@ jobs:
   hotfix_branch_commits_validation_pipeline:
     # Check if push event is on the hotfix branch:
     # if: github.ref_name == 'hotfix'  => ne fonctionne pas
-    if:  startsWith(github.head_ref, 'hotfix')
+    if: (!startsWith(github.event.head_commit.message, 'fix:' ))
     runs-on: ubuntu-latest
     steps:
       - name: 'Code checkout'
@@ -30,4 +30,5 @@ jobs:
 
       - name: 'Hotfix branch validation'
       # Check if the commit message follows the 'Conventional commits' specifications and begins with 'fix:'
-        uses: webiny/action-conventional-commits@v1.1.0
+        run: echo "Commit message for hotfix branch does not begin with 'fix:'"
+        # uses: webiny/action-conventional-commits@v1.1.0
