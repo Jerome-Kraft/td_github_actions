@@ -29,7 +29,7 @@ jobs:
       # On récupère le fichier via l'action download-artifact
         uses: actions/download-artifact@v3
         with:
-          # On lui précise le nom de l'artéfact à récupérer, sinon par défaut il prenra le nom "artifact"
+          # On lui précise le nom de l'artéfact à récupérer, sinon par défaut il prendra le nom "artifact"
           name: 'Artifact'
       - name: 'Read-file'
         # Commande Linux pour lire le contenu d'un fichier 

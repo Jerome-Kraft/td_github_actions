@@ -1,4 +1,4 @@
-name: td_5_nf8-do-01_github_actions
+name: td_5_nf8-do-02_github_actions
 
 on:
   pull_request:
@@ -42,3 +42,27 @@ jobs:
       - name: 'Initialize tests in the project'
         run: npm run test
 
+  upload_coverage_artifact:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: 'Create artifact file'
+        run: echo npm run test:coverage > coverage.txt
+        
+      - name: 'Upload artifact file'
+        uses: actions/upload-artifact@v3
+        with:
+        # File name and file path that will be used for upload
+          name: coverage
+          path: coverage.txt
+
+  download:
+    needs: [upload_coverage_artifact]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Download artifact file'
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+
+      - name: 'Read artifact file'
+        run: cat coverage.txt
