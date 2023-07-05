@@ -1,4 +1,4 @@
-name: hello_world_3-4_workflow_depends_github_actions
+name: td_3-4_workflow_depends_github_actions
 
 on: workflow_dispatch
 

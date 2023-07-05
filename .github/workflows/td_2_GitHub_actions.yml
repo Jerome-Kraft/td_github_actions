@@ -1,4 +1,4 @@
-name: hello_world_2_github_actions
+name: td_2_github_actions
 
 on: [push, pull_request]
 

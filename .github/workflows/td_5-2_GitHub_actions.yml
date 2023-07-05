@@ -1,0 +1,13 @@
+# Voir td 5-1
+
+name: td_5_nf7-do-02_github_actions
+
+on: 
+  push:
+    branches: [develop]
+
+jobs:
+  develop_branch_protection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Develop branch protection'

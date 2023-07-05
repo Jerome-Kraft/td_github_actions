@@ -1,4 +1,4 @@
-name: hello_world_3-1_issues_github_actions
+name: td_3-1_issues_github_actions
 
 on: 
   issues:

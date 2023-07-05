@@ -1,4 +1,4 @@
-name: hello_world_github_actions
+name: td_1_github_actions
 on: workflow_dispatch
 jobs:
   print_hello_world:
