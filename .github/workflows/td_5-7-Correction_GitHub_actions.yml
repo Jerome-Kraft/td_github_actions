@@ -1,0 +1,17 @@
+name: td_5_nf8-do-04_github_actions
+
+on:
+  pull_request:
+    types: [closed]
+  
+jobs:
+  delete_old_branch:
+    if: (startsWith(github.head_ref, 'features'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Delete validated branch'
+        uses: koj-co/delete-merged-action@master
+        with:
+          branches: "!main, !develop, features/**"
+            env:
+            GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

@@ -1,0 +1,42 @@
+name: td_5_nf8-do-01-correction_github_actions
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: [develop]
+
+jobs:
+  check_head_branche_name:
+    # Check if the pull request event is headed from the feature branch:
+    if: (startsWith(github.head_ref, 'features'))
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix: 
+        node-version: [14.x, 16.x]
+      
+    steps:
+      - name: 'Import all repository elements'
+        uses: actions/checkout@v3
+
+      - name: 'Initialize Node.JS with the matrix version ${{ matrix.node-version }}'
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: 'Initialize node modules with a task'
+        run: npm ci
+        
+      - name: 'Initialize Node.JS build'
+        run: npm run build --if-present
+
+      - name: 'Initialize tests in the project'
+        run: npm run test:coverage > coverage.txt
+
+      - name: 'Upload artifact file'
+        uses: actions/upload-artifact@v3
+        with:
+        # File name and file path that will be used for upload
+          name: coverage
+          path: coverage.txt

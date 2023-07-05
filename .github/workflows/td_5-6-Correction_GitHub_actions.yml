@@ -1,0 +1,16 @@
+name: td_5_nf4-do-01_github_actions
+
+on:
+  issues:
+    types: [assigned]
+  
+jobs:
+  create_issue_branch_job:
+    if: (startsWith(github.event.issue.title, 'features'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Create issue branch'
+        uses: robvanderleek/create-issue-branch@main
+
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

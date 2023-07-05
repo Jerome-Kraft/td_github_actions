@@ -1,0 +1,17 @@
+name: td_5_nf7-do-03-correction_github_actions
+
+on: 
+  push:
+    branches: [features/**, hotfix/**]
+
+jobs:
+  features_branch_commits_validation_pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Code checkout'
+        uses: actions/checkout@v2
+        # Using the 'webiny/action-conventional-commits@v1.1.0' needs the @v2 to run
+
+      - name: 'Features branch validation'
+      # Check if the commit message follows the 'Conventional commits' specifications and begins with 'feat:'
+        uses: webiny/action-conventional-commits@v1.1.0
