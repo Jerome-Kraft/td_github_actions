@@ -2,7 +2,7 @@ name: td_5_nf7-do-03_github_actions
 
 on: 
   push:
-    branches: [features/**, hotfix/**]
+    branches: [features, hotfix]
 
 jobs:
   features_branch_commits_validation_pipeline:
