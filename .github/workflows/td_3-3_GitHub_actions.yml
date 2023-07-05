@@ -1,4 +1,4 @@
-name: hello_world_3-3_next_one_github_actions
+name: td_3-3_next_one_github_actions
 
 on:
   workflow_run:
